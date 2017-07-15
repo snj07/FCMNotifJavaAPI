@@ -17,15 +17,15 @@ public class RegisterDeviceServlet extends HttpServlet {
 
 	public RegisterDeviceServlet() {
 		super();
-		// TODO Auto-generated constructor stub
+
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		response.getWriter().append("GET not supported ").append(request.getContextPath());
 	}
 
+	// register a device to server
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		JSONObject json = new JSONObject();
@@ -43,7 +43,7 @@ public class RegisterDeviceServlet extends HttpServlet {
 		} else {
 			json.put("info", "fail");
 		}
-		
+
 		response.setContentType("application/json");
 		response.setCharacterEncoding("UTF-8");
 		response.getWriter().write(json.toString());

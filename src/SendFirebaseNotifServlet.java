@@ -9,48 +9,46 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Servlet implementation class SendFirebaseNotifServlet
- */
 @WebServlet("/SendFirebaseNotifServlet")
 public class SendFirebaseNotifServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
+
 	public SendFirebaseNotifServlet() {
 		super();
-		// TODO Auto-generated constructor stub
-	}
-
-
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Only post supported ").append(request.getContextPath());
 	
 	}
 
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		
+		response.getWriter().append("Only post supported ").append(request.getContextPath());
+
+	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		Notification notification = new Notification();
 		DbOperation dbOperation = new DbOperation();
-		List<String> list = dbOperation.getAllTokens();
-		for (String s : list)
-			notification.addDeviceToSend(s);
+		if (request.getParameter("push_type").equals("all")) {
+			List<String> list = dbOperation.getAllTokens();
+			for (String token : list)
+				notification.addDeviceToSend(token);
+		}else {
+			String token = dbOperation.getTokenByEmail(request.getParameter("regId"));
+			notification.addDeviceToSend(token);
+		}
 		notification.setTitle(request.getParameter("title"));
 		notification.setMessageBody(request.getParameter("message"));
-//		notification.addDataAttribute("image", "https://i.ytimg.com/vi/d_T5P-zIIAs/maxresdefault.jpg");
-		notification.addDataAttribute("image", request.getParameter("image"));  // custom data payload
+	
+		notification.addDataAttribute("image", request.getParameter("image")); // custom data payload
 
-		FirebaseResponse fr = new PushNotifHelper().sendNotificationToSingleDevice(notification);
+		FirebaseResponse fr = new PushNotifHelper().sendNotificationToDevice(notification);
 		System.out.println(fr.getErrorMessage());
 		System.out.println(fr.getFCMResponseCode());
 		System.out.println(fr.getSuccessMessage());
+		response.getWriter().append("Notification sent!!!").append(request.getContextPath());
 	}
 
-	
 }

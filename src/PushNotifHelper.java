@@ -7,8 +7,9 @@ import java.net.URL;
 import firebase.*;
 public class PushNotifHelper {
 
-	public FirebaseResponse sendNotificationToSingleDevice(Notification notification) {
-		// String token = dbOperation.getTokenByEmail(notification.);
+	//send notification to single or multiple devices
+	public FirebaseResponse sendNotificationToDevice(Notification notification) {
+		
 		HttpURLConnection httpURLConnection = null;
 		if (notification.getDeviceListToSend().size() > 0) {
 

@@ -33,6 +33,8 @@ public class Notification {
 	private final String PARAM_TO = "registration_ids";
 	private final String PARAM_BODY = "body";
 	private final String PARAM_ICON = "icon";
+	
+	//You can insert these attributes using addNotificationAttribute method
 	private final String PARAM_SOUND = "sound";
 	private final String PARAM_TAG = "tag";
 	private final String PARAM_COLOR = "color";
@@ -51,7 +53,7 @@ public class Notification {
 
 		JSONArray jsonArray = new JSONArray();
 		jsonArray.addAll(user_token);
-		final_json.put("registration_ids", jsonArray);
+		final_json.put(PARAM_TO, jsonArray);
 		if (notification_params.size() > 0) {
 			JSONObject jsonNotif = new JSONObject();
 			jsonNotif.putAll(notification_params);

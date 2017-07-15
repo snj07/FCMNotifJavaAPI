@@ -59,7 +59,7 @@
                 <fieldset>
                     <legend>Send to Single Device</legend>
  
-                    <label for="reg_email">Firebase Reg Email</label>
+                    <label for="redId">Firebase Reg Email</label>
                     <input type="text" id="redId" name="regId" class="pure-input-1-2" placeholder="Enter firebase registration email-id">
  
                     <label for="title">Title</label>
@@ -77,7 +77,7 @@
             </form>
             <br/><br/><br/><br/>
  
-            <form class="pure-form pure-form-stacked" method="post">
+            <form class="pure-form pure-form-stacked" method="post" action="/FcmNotif/SendFirebaseNotifServlet">
                 <fieldset>
                     <legend>Send to All Device</legend>
                      <label for="title">Title</label>
@@ -89,7 +89,7 @@
                      <label for="image">Image URL</label>
                     <input type="text" id="image" name="image" class="pure-input-1-2" placeholder="Enter Image URL">
  
-                    <input type="hidden" name="push_type" value="topic"/>
+                    <input type="hidden" name="push_type" value="all"/>
                     <button type="submit" class="pure-button pure-button-primary btn_send">Send to All</button>
                 </fieldset>
             </form>

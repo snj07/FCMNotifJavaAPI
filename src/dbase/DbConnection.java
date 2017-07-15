@@ -18,6 +18,7 @@ public class DbConnection {
 	public static Connection getConnection() {
 		if (conn == null) {
 			String url = "jdbc:mysql://localhost:3306/firebase";
+			//It should be fetched from web.xml
 			String user = "root";
 			String password = "root";
 			try {

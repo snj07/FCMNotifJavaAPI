@@ -21,7 +21,7 @@ public class SendFirebaseNotifServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
+
 		response.getWriter().append("Only post supported ").append(request.getContextPath());
 
 	}

@@ -8,6 +8,7 @@ import firebase.*;
 public class PushNotifHelper {
 
 	//send notification to single or multiple devices
+	
 	public FirebaseResponse sendNotificationToDevice(Notification notification) {
 		
 		HttpURLConnection httpURLConnection = null;

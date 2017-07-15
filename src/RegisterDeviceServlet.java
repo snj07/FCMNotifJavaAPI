@@ -25,6 +25,7 @@ public class RegisterDeviceServlet extends HttpServlet {
 		response.getWriter().append("GET not supported ").append(request.getContextPath());
 	}
 
+
 	// register a device to server
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {

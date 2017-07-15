@@ -92,7 +92,7 @@
                     <input type="hidden" name="push_type" value="all"/>
                     <button type="submit" class="pure-button pure-button-primary btn_send">Send to All</button>
                 </fieldset>
-            </form>
+            </form>  <br/><br/><br/><br/>
 </div>
 </body>
 </html>
